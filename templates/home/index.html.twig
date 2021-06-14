@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gite Progica{% endblock %}
+
+{% block body %}
+  <section class="row title">
+    <h1>Liste des gîtes</h1>
+  </section>
+  <section class="row">
+    {% for gite in gites %}
+
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">{{ gite.address }}</p>
+          <p class="card-text">{{ gite.priceHightSeason }}</p>
+          <p class="card-text">{{ gite.pricelowSeason }}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+
+    {% endfor %}
+  </section>
+{% endblock %}
