@@ -19,7 +19,7 @@ class GiteController extends AbstractController
      * affichage gite ciblé
      * @route("/gite/{id}",name="gite.show")
      */
-    public function show(int $id)
+    public function show(int $id): Response
     {
         $gite = $this->repo->find($id);
         // dd($gite);

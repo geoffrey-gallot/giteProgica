@@ -9,11 +9,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
-
+    /**
+     * @param GiteRepository $giteRepository
+     */
     public function __construct(GiteRepository $giteRepository)
     {
         $this->repo = $giteRepository;
     }
+
     /**
      * @Route("/home", name="home")
      */
