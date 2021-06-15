@@ -9,7 +9,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class GiteController extends AbstractController
 {
-
+    /**
+     * Undocumented function
+     *
+     * @param GiteRepository $giteRepository
+     */
     public function __construct(GiteRepository $giteRepository)
     {
         $this->repo = $giteRepository;

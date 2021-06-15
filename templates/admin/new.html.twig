@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+  Nouveau gîte
+{% endblock %}
+
+{% block body %}
+  <section class="row">
+    <h1>Ajouter un gîte PROGICA</h1>
+  </section>
+
+  <section class="row">
+    <article class="col-4"></article>
+    <article class="col-4">
+      {{ form_start(formGite) }}
+      {{ form_rest(formGite) }}
+      <input type="submit" value="Créer" class="btn btn-secondary">
+      {{ form_end(formGite) }}
+    </article>
+    <article class="col-4"></article>
+  </section>
+{% endblock %}
