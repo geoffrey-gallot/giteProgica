@@ -5,12 +5,11 @@
 {% endblock %}
 
 {% block body %}
-  <h1>administration des gites PROGICA</h1>
+  <h1>administration des gîtes PROGICA</h1>
     {% for message in app.flashes('success') %}
     <div class="alert alert-success">
         <p>{{ message }}</p>
     </div>
-        
     {% endfor %}
   <section class="row">
     <a href="{{ path('admin.new') }}" class="btn btn-warning col-1">Ajouter</a>
@@ -27,6 +26,7 @@
             <td>{{ gite.name }}</td>
             <td>
               <a href="" class="btn btn-primary">Editer</a>
+              <a href="" class="btn btn-danger">Supprimer</a>
             </td>
           </tr>
         {% endfor %}
@@ -34,3 +34,7 @@
     </table>
   </section>
 {% endblock %}
+
+{# {{path('admin.edit', {'id': gite.id})}} #}
+{# {{ path('admin.delete', {'id': gite.id}) }} #}
+{# {'id': gite.id} #}

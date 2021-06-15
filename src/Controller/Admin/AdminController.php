@@ -66,4 +66,35 @@ class AdminController extends AbstractController
         ]);
     }
 
+    /**
+     * Undocumented function
+     * @route("/admin/delete",name="admin.delete")
+     * @param integer $id
+     * @return void
+     */
+    // public function delete(int $id)
+    // {
+    //     dd($id);
+    //     // $gite = $this->repo->find($id);
+    //     // $em = $this->getDoctrine()->getManager();
+    //     // $em->remove($gite);
+    //     // $em->flush();
+
+    //     // $this->addFlash("delete", "Le gîte a bien été supprimé");
+    //     // return $this->redirectToRoute('admin.index');
+    // }
+
+    /**
+     * Undocumented function
+     * @route("/admin/edit",name="admin.edit")
+     * @param integer $id
+     * @return void
+     */
+    // public function edit(int $id)
+    // {
+    //     $gite = $this->repo->find($id);
+    //     return $this->render('admin/edit.html.twig',[
+    //         "gite" => $gite,
+    //     ]);
+    // }
 }
