@@ -9,14 +9,19 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
+
+    public function __construct(GiteRepository $giteRepository)
+    {
+        $this->repo = $giteRepository;
+    }
     /**
      * @Route("/home", name="home")
      */
-    public function index(GiteRepository $giteRepository): Response
+    public function index(): Response
     {
-        return $this->render('home/index.html.twig',[
-            'gites' => $giteRepository->findAll(),
+        $gites = $this->repo->findAll();
+        return $this->render('home/index.html.twig', [
+            'gites' => $gites,
         ]);
     }
-
 }
