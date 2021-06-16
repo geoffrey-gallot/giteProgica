@@ -2,18 +2,29 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Gite;
 use Faker\Factory;
+use App\Entity\Gite;
+use App\Entity\User;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
+    private $encoder;
+
+    public function __construct(UserPasswordHasherInterface $encoder)
+    {
+        $this->encoder = $encoder;
+    }
+
     public function load(ObjectManager $manager)
     {
         // $product = new Product();
         // $manager->persist($product);
-        for ($i=0; $i < 6; $i++) { 
+
+        //creation gite
+        for ($i=0; $i < 4; $i++) { 
             $faker = Factory::create('fr_FR');
             $gite[$i] = new Gite();
             $gite[$i]->setAddress($faker->address());
@@ -29,6 +40,26 @@ class AppFixtures extends Fixture
 
             $manager->persist($gite[$i]);
         }
+
+        //creation utilisateur
+        $user1 = new User();
+        $user1->setUsername('admin01')
+              ->setRoles(['ROLE_ADMIN'])
+              ->setPassword($this->encoder->hashPassword($user1, 'admin01'));
+        $manager->persist($user1);
+
+        $user2 = new User();
+        $user2->setUsername('user01')
+              ->setRoles(['ROLE_USER'])
+              ->setPassword($this->encoder->hashPassword($user2, 'user01'));
+        $manager->persist($user2);
+
+        $user3 = new User();
+        $user3->setUsername('user02')
+              ->setRoles(['ROLE_USER'])
+              ->setPassword($this->encoder->hashPassword($user3, 'user02'));
+        $manager->persist($user3);
+
         $manager->flush();
     }
 }
