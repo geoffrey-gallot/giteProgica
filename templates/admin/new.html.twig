@@ -10,46 +10,46 @@
   </section>
 
   <section class="row">
-      {{ form_start(formGite) }}
+    {{ form_start(formGite) }}
 
-      <article class="row">
-        <div class="col-md-6">
-          {{ form_row(formGite.name) }}
-        </div>
-      </article>
-
-      <article class="row">
-        <div class="col-md-6">
-          {{ form_row(formGite.address) }}
-        </div>
-      </article>
-
-      <article class="row">
-        <div class="col-md-6">
-          {{ form_row(formGite.descript) }}
-        </div>
-      </article>
-
-      <article class="row">
-        <div class="col-md-3">{{ form_row(formGite.priceHightSeason) }}</div>
-        <div class="col-md-3">{{ form_row(formGite.priceLowSeason) }}</div>
-      </article>
-
-      <article class="row">
-        <div class="col-md-3">{{ form_row(formGite.animals) }}</div>
-        <div class="col-md-3">{{ form_row(formGite.priceAnimals) }}</div>
-      </article>
-
-      <article class="row">
-        <div class="col-md-2">{{ form_row(formGite.superficy) }}</div>
-        <div class="col-md-2">{{ form_row(formGite.bedroom) }}</div>
-        <div class="col-md-2">{{ form_row(formGite.nbBed) }}</div>
-      </article>
-
-      <input type="submit" value="Créer" class="btn btn-secondary">
-
-      {{ form_end(formGite) }}
+    <article class="row">
+      <div class="col-md-6">
+        {{ form_row(formGite.name) }}
+      </div>
     </article>
+
+    <article class="row">
+      <div class="col-md-6">
+        {{ form_row(formGite.address) }}
+      </div>
+    </article>
+
+    <article class="row">
+      <div class="col-md-6">
+        {{ form_row(formGite.descript) }}
+      </div>
+    </article>
+
+    <article class="row">
+      <div class="col-md-3">{{ form_row(formGite.priceHightSeason) }}</div>
+      <div class="col-md-3">{{ form_row(formGite.priceLowSeason) }}</div>
+    </article>
+
+    <article class="row">
+      <div class="col-md-3">{{ form_row(formGite.animals) }}</div>
+      <div class="col-md-3">{{ form_row(formGite.priceAnimals) }}</div>
+    </article>
+
+    <article class="row">
+      <div class="col-md-2">{{ form_row(formGite.superficy) }}</div>
+      <div class="col-md-2">{{ form_row(formGite.bedroom) }}</div>
+      <div class="col-md-2">{{ form_row(formGite.nbBed) }}</div>
+    </article>
+
+    <input type="submit" value="Créer" class="btn btn-success">
+    <a href="{{ path('admin.index') }}" class="btn btn-secondary">Annuler</a>
+    {{ form_end(formGite) }}
+  </article>
 
 </section>
 {% endblock %}

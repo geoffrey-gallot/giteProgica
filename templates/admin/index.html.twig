@@ -26,7 +26,14 @@
             <td>{{ gite.name }}</td>
             <td>
               <a href="{{ path('admin.edit', {id: gite.id}) }}" class="btn btn-primary">Editer</a>
-              <a href="" class="btn btn-danger">Supprimer</a>
+              <form method="post" action="{{path('admin.delete', {'id': gite.id})}}" style="display: inline-block;">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ gite.id) }}">
+                <input type="hidden" name="_method" value="DELETE">
+                <button class="btn btn-danger">Supprimer</button>
+              </form>
+
+
+              
             </td>
           </tr>
         {% endfor %}
@@ -34,6 +41,3 @@
     </table>
   </section>
 {% endblock %}
-
-{# {{ path('admin.delete', {'id': gite.id}) }} #}
-{# {'id': gite.id} #}

@@ -7,7 +7,7 @@ use App\Form\GiteType;
 use App\Repository\GiteRepository;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\BrowserKit\Response;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,7 +36,7 @@ class AdminController extends AbstractController
     public function index()
     {
         $gites = $this->repo->findAll();
-        return $this->render('admin/index.html.twig',[
+        return $this->render('admin/index.html.twig', [
             'gites' => $gites,
         ]);
     }
@@ -53,36 +53,32 @@ class AdminController extends AbstractController
         $form = $this->createForm(GiteType::class, $gite);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->em->persist($gite);
             $this->em->flush();
             $this->addFlash("success", "Le gîte a bien été enregistré");
             return $this->redirectToRoute('admin.index');
         }
 
-        return $this->render('admin/new.html.twig',[
+        return $this->render('admin/new.html.twig', [
             "formGite" => $form->createView(),
         ]);
     }
 
     /**
      * Undocumented function
-     * @route("/admin/delete",name="admin.delete")
-     * @param integer $id
-     * @return void
+     * @route("/admin/{id}/delete",name="admin.delete")
      */
-    // public function delete(int $id)
-    // {
-    //     dd($id);
-    //     // $gite = $this->repo->find($id);
-    //     // $em = $this->getDoctrine()->getManager();
-    //     // $em->remove($gite);
-    //     // $em->flush();
-
-    //     // $this->addFlash("delete", "Le gîte a bien été supprimé");
-    //     // return $this->redirectToRoute('admin.index');
-    // }
+    public function delete(Gite $gite, Request $request): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $gite->getId(), $request->get('_token'))) {
+            $removeGite = $this->em;
+            $removeGite->remove($gite);
+            $removeGite->flush();
+        }
+        $this->addFlash("delete", "Le gîte a bien été supprimé"); 
+        return $this->redirectToRoute('admin.index');
+    }
 
     /**
      * Undocumented function
@@ -90,19 +86,18 @@ class AdminController extends AbstractController
      * @param Gite $gite
      * @return void
      */
-    public function edit(Gite $gite, Request $request, EntityManagerInterface $em)
+    public function edit(Gite $gite, Request $request)
     {
         $form = $this->createForm(GiteType::class, $gite);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->em->persist($gite);
             $this->em->flush();
             $this->addFlash("success", "Le gîte a bien été Modifier");
             return $this->redirectToRoute('admin.index');
         }
 
-        return $this->render('admin/edit.html.twig',[
+        return $this->render('admin/edit.html.twig', [
             "gite" => $gite,
             'formGite' => $form->createView(),
         ]);
