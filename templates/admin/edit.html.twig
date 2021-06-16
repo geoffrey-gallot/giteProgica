@@ -9,41 +9,51 @@
     <h1>Modifier un gîte PROGICA</h1>
   </section>
 
-  {#<section class="row">
-    <article class="col-4"></article>
-    <article class="col-4">
-      {{ form_start(formGite) }}
-      {{ form_rest(formGite) }}
-      <input type="submit" value="Créer" class="btn btn-secondary">
-      {{ form_end(formGite) }}
+  <section class="row">
+    <h1>Ajouter un gîte PROGICA</h1>
+  </section>
+
+  <section class="row">
+    {{ form_start(formGite) }}
+
+    <article class="row">
+      <div class="col-md-6">
+        {{ form_row(formGite.name) }}
+      </div>
     </article>
-    <article class="col-4"></article>
-  </section> #}
-  
-  <div class="card bg-white text-black col-8">
-    <img src="https://via.placeholder.com/500x250" class="card-img" alt="...">
-    <div class="card-img-overlay">
-      <h5 class="card-title">{{ gite.name }}</h5>
-    </div>
-    <div class="card-body">
-      <p class="card-text">{{ gite.descript }}</p>
-      <p class="card-text">{{ gite.address }}</p>
-      <p class="card-text">Prix Pour une nuit en haute saison :
-        {{gite.priceHightSeason}}
-        €</p>
-      <p class="card-text">Prix Pour une nuit en basse saison :
-        {{gite.priceLowSeason}}
-        €</p>
-      <p class="card-text">
-        {% if gite.animals is same as(true) %}
-          <p>animaux accepté</p>
-          <p>Supplément de
-            {{ gite.priceAnimals }}
-            € par animal</p>
-        {% else %}
-          <p>animaux refusé</p>
-        {% endif %}
-      </p>
-    </div>
-  </div>F
+
+    <article class="row">
+      <div class="col-md-6">
+        {{ form_row(formGite.address) }}
+      </div>
+    </article>
+
+    <article class="row">
+      <div class="col-md-6">
+        {{ form_row(formGite.descript) }}
+      </div>
+    </article>
+
+    <article class="row">
+      <div class="col-md-3">{{ form_row(formGite.priceHightSeason) }}</div>
+      <div class="col-md-3">{{ form_row(formGite.priceLowSeason) }}</div>
+    </article>
+
+    <article class="row">
+      <div class="col-md-3">{{ form_row(formGite.animals) }}</div>
+      <div class="col-md-3">{{ form_row(formGite.priceAnimals) }}</div>
+    </article>
+
+    <article class="row">
+      <div class="col-md-2">{{ form_row(formGite.superficy) }}</div>
+      <div class="col-md-2">{{ form_row(formGite.bedroom) }}</div>
+      <div class="col-md-2">{{ form_row(formGite.nbBed) }}</div>
+    </article>
+
+    <input type="submit" value="Modifier" class="btn btn-secondary">
+
+    {{ form_end(formGite) }}
+  </article>
+
+</section>
 {% endblock %}

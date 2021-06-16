@@ -86,15 +86,25 @@ class AdminController extends AbstractController
 
     /**
      * Undocumented function
-     * @route("/admin/edit",name="admin.edit")
-     * @param integer $id
+     * @route("/admin/{id}/edit", name="admin.edit")
+     * @param Gite $gite
      * @return void
      */
-    // public function edit(int $id)
-    // {
-    //     $gite = $this->repo->find($id);
-    //     return $this->render('admin/edit.html.twig',[
-    //         "gite" => $gite,
-    //     ]);
-    // }
+    public function edit(Gite $gite, Request $request, EntityManagerInterface $em)
+    {
+        $form = $this->createForm(GiteType::class, $gite);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $this->em->persist($gite);
+            $this->em->flush();
+            $this->addFlash("success", "Le gîte a bien été Modifier");
+            return $this->redirectToRoute('admin.index');
+        }
+
+        return $this->render('admin/edit.html.twig',[
+            "gite" => $gite,
+            'formGite' => $form->createView(),
+        ]);
+    }
 }

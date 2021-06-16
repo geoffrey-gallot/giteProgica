@@ -25,7 +25,7 @@
             <td>#{{ gite.id }}</td>
             <td>{{ gite.name }}</td>
             <td>
-              <a href="" class="btn btn-primary">Editer</a>
+              <a href="{{ path('admin.edit', {id: gite.id}) }}" class="btn btn-primary">Editer</a>
               <a href="" class="btn btn-danger">Supprimer</a>
             </td>
           </tr>
@@ -35,6 +35,5 @@
   </section>
 {% endblock %}
 
-{# {{path('admin.edit', {'id': gite.id})}} #}
 {# {{ path('admin.delete', {'id': gite.id}) }} #}
 {# {'id': gite.id} #}
