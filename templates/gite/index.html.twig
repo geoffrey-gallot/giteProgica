@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gite Progica{% endblock %}
+
+{% block body %}
+    
+  <main class="container-fluid indexContainer">
+    <section class="row title">
+        
+      <h1>Liste des gîtes</h1>
+    </section>
+    <section class="container">
+      <article class="row">
+        {% for gite in gites %}
+          <div class="card m-4" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ gite.name }}</h5>
+              <p class="card-text">{{ gite.address }}</p>
+              <p class="card-text">{{ formatResume(gite.descript) }}</p>
+              <a href="{{ path('gite.show', {'id': gite.id}) }}" class="btn btn-secondary">Plus d'information</a>
+            </div>
+          </div>
+        {% endfor %}
+      </article>
+    </section>
+  </main>
+{% endblock %}

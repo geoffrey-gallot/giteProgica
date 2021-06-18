@@ -20,6 +20,17 @@ class GiteController extends AbstractController
     }
 
     /**
+     * @Route("/gite/index", name="gite.index")
+     */
+    public function index(): Response
+    {
+        $gites = $this->repo->findAll();
+        return $this->render('gite/index.html.twig', [
+            'gites' => $gites,
+        ]);
+    }
+
+    /**
      * affichage gite ciblé
      * @route("/gite/{id}",name="gite.show")
      */
