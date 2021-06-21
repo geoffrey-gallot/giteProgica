@@ -8,6 +8,27 @@
     <section class="row">
       <h1>Liste des gîtes</h1>
     </section>
+    <section class="row">
+      <h3>Filtres</h3>
+      <form>
+        {{ form_start(form) }}
+        <div class="row">
+          <div class="col-md-3">
+            {{ form_row(form.minSurface) }}
+          </div>
+          <div class="col-md-3">
+            {{ form_row(form.minBedroom) }}
+          </div>
+          <div class="col-md-3">
+            {{ form_row(form.maxPrice) }}
+          </div>
+          <div class="col-md-3 mt-4">
+            {{ form_row(form.submit) }}
+          </div>
+        </div>
+        {{ form_end(form) }}
+      </form>
+    </section>
     <section class="d-flex justify-content-center">
       <article class="row">
         {% for gite in gites %}
@@ -16,6 +37,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ gite.name }}</h5>
               <p class="card-text">{{ gite.address }}</p>
+              <p class="card-text">Surface : {{ gite.superficy }} m²</p>
               <p class="card-text">{{ formatResume(gite.descript) }}</p>
               <a href="{{ path('gite.show', {'id': gite.id}) }}" class="btn btn-secondary">Plus d'information</a>
             </div>

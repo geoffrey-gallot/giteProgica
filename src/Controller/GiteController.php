@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\GiteSearch;
+use App\Form\GiteSearchType;
 use App\Repository\GiteRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,8 +47,14 @@ class GiteController extends AbstractController
         Request $request
     ): Response
     {
+        // creer une entité recherche
+        // creer le formulaire associé
+        // gerer le traitement des donnée du form via SQL
+        $search = new GiteSearch();
+        $form = $this->createForm(GiteSearchType::class, $search);
+        $form->handleRequest($request);
 
-        $data = $this->repo->findAll();
+        $data = $this->repo->findAllGiteSearch($search);
         $gites = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
@@ -54,6 +62,7 @@ class GiteController extends AbstractController
         );
         return $this->render('gite/index.html.twig', [
             'gites' => $gites,
+            'form' => $form->createView(),
         ]);
     }
 
