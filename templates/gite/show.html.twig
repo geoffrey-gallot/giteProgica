@@ -28,6 +28,14 @@
           <p>animaux refusé</p>
         {% endif %}
       </p>
+      <p class="card-text">
+        <h6>Equipements :</h6>
+        <ul>
+          {% for equipement in gite.equipements %}
+            <li>{{ equipement.name }}</li>
+          {% endfor %}
+        </ul>
+      </p>
     </div>
   </div>
 {% endblock %}

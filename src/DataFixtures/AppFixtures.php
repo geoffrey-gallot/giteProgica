@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Equipement;
 use Faker\Factory;
 use App\Entity\Gite;
 use App\Entity\User;
@@ -22,10 +23,35 @@ class AppFixtures extends Fixture
     {
         // $product = new Product();
         // $manager->persist($product);
+        $faker = Factory::create('fr_FR');
+
+        //creation equipements
+        $equipements = [];
+
+        $eq1 = new Equipement();
+        $eq1->setName('Piscine');
+
+        $eq2 = new Equipement();
+        $eq2->setName('Sauna');
+
+        $eq3 = new Equipement();
+        $eq3->setName('Lave-linge');
+
+        $eq4 = new Equipement();
+        $eq4->setName('Lave-vaisselle');
+
+        array_push($equipements, $eq1, $eq2, $eq3, $eq4);
+
+        $manager->persist($eq1);
+        $manager->persist($eq2);
+        $manager->persist($eq3);
+        $manager->persist($eq4);
+
+        $manager->flush();
 
         //creation gite
-        for ($i=0; $i < 4; $i++) { 
-            $faker = Factory::create('fr_FR');
+        for ($i=0; $i < 50; $i++) { 
+            
             $gite[$i] = new Gite();
             $gite[$i]->setAddress($faker->address());
             $gite[$i]->setSuperficy($faker->numberBetween(60, 180));
@@ -37,6 +63,8 @@ class AppFixtures extends Fixture
             $gite[$i]->setPriceLowSeason($faker->randomFloat(2, 50, 100));
             $gite[$i]->setName($faker->realText(40, 1));
             $gite[$i]->setDescript($faker->realText(500, 1));
+            $gite[$i]->addEquipement($faker->randomElement($equipements));
+            $gite[$i]->addEquipement($faker->randomElement($equipements));
 
             $manager->persist($gite[$i]);
         }

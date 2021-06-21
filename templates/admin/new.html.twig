@@ -46,6 +46,10 @@
       <div class="col-md-2">{{ form_row(formGite.nbBed) }}</div>
     </article>
 
+    <article class="row">
+      <div class="col-md-6">{{ form_row(formGite.equipements) }}</div>
+    </article>
+
     <input type="submit" value="Créer" class="btn btn-success">
     <a href="{{ path('admin.index') }}" class="btn btn-secondary">Annuler</a>
     {{ form_end(formGite) }}
