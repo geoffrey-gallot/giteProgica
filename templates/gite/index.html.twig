@@ -3,17 +3,16 @@
 {% block title %}Gite Progica{% endblock %}
 
 {% block body %}
-    
-  <main class="container-fluid indexContainer">
-    <section class="row title">
-        
+
+  <main class="container-fluid">
+    <section class="row">
       <h1>Liste des gîtes</h1>
     </section>
-    <section class="container">
+    <section class="d-flex justify-content-center">
       <article class="row">
         {% for gite in gites %}
           <div class="card m-4" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
+            <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{ gite.name }}</h5>
               <p class="card-text">{{ gite.address }}</p>
@@ -23,6 +22,9 @@
           </div>
         {% endfor %}
       </article>
+    </section>
+    <section class="d-flex justify-content-center">
+      {{ knp_pagination_render(gites, 'pagination.html.twig') }}
     </section>
   </main>
 {% endblock %}

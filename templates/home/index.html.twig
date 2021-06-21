@@ -6,11 +6,14 @@
   <section class="row title">
     <h1>Bienvenu chez PROGICA</h1>
   </section>
+  <div class="img d-flex justify-content-center">
+  <img src="http://via.placeholder.com/1000x500" alt="">
+  </div>
   <section class="row">
     {% for gite in gites %}
       <div class="col-md-4 mt-3">
         <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
+          <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">{{ gite.name }}</h5>
             <p class="card-text">{{ gite.address }}</p>
