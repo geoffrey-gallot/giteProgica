@@ -41,7 +41,9 @@
       <article class="row">
         {% for gite in gites %}
           <div class="card m-4" style="width: 18rem;">
-            <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="...">
+            {% if gite.fileName %}
+              <img src="{{gite.fileName}}" class="card-img-top" alt="...">
+            {% endif %}
             <div class="card-body">
               <h5 class="card-title">{{ gite.name }}</h5>
               <p class="card-text">{{ gite.address }}</p>

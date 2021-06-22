@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class GiteType extends AbstractType
@@ -55,6 +56,9 @@ class GiteType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'required' => false
+            ])
+            ->add('imageFile',FileType::class, [
+                'required' => false,
             ])
         ;
     }

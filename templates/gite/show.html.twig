@@ -6,7 +6,9 @@
 {% block body %}
   <main class="d-flex justify-content-center">
     <div class="card bg-white text-black col-8">
-      <img src="https://via.placeholder.com/500x250" class="card-img" alt="...">
+      {% if gite.fileName %}
+        <img src="{{gite.fileName}}" class="card-img-top" alt="...">
+      {% endif %}
       <div class="card-img-overlay">
         <h5 class="card-title">{{ gite.name }}</h5>
       </div>

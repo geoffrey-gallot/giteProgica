@@ -65,7 +65,8 @@ class AppFixtures extends Fixture
                 ->setName($faker->realText(40, 1))
                 ->setDescript($faker->realText(500, 1))
                 ->addEquipement($faker->randomElement($equipements))
-                ->addEquipement($faker->randomElement($equipements));
+                ->addEquipement($faker->randomElement($equipements))->setFileName($faker->imageUrl(1000, 500, 'city'))
+                ->setUpdatedAt($faker->dateTimeAD('now', null));
 
             $manager->persist($gite[$i]);
         }
