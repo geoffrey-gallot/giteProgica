@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Equipement;
 use App\Entity\GiteSearch;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -50,11 +52,23 @@ class GiteSearchType extends AbstractType
                 ]
 
             )
+            //selecteur equipement
             ->add(
-                'submit', SubmitType::class
+                'equipements',
+                EntityType::class,
+                [
+                    'class' => Equipement::class,
+                    'required' => false,
+                    'label' => false,
+                    'expanded' => true,
+                    'choice_label' => 'name',
+                    'multiple' => true,
+                ]
+            )
+            ->add(
+                'submit',
+                SubmitType::class
             );
-            
-
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -70,5 +84,4 @@ class GiteSearchType extends AbstractType
     {
         return '';
     }
-
 }

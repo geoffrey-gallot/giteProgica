@@ -13,21 +13,26 @@
       <form>
         {{ form_start(form) }}
         <div class="row">
-          <div class="col-md-3">
+          <article class="col-md-3">
             {{ form_row(form.minSurface) }}
-          </div>
-          <div class="col-md-3">
+          </article>
+          <article class="col-md-3">
             {{ form_row(form.minBedroom) }}
-          </div>
-          <div class="col-md-3">
+          </article>
+          <article class="col-md-3">
             {{ form_row(form.maxPrice) }}
-          </div>
-          <div class="col-md-3 mt-4">
+          </article>
+          <article class="col-md-3 mt-4">
             {{ form_row(form.accueilAnimal) }}
-          </div>
-          <div class="col-md-3 mt-4">
+          </article>
+          <article class="col-md-3 mt-4">
+            {{ form_row(form.equipements) }}
+          </article>
+        </div>
+        <div class="row">
+          <article class="col-md-3 mt-4">
             {{ form_row(form.submit) }}
-          </div>
+          </article>
         </div>
         {{ form_end(form) }}
       </form>
@@ -40,7 +45,9 @@
             <div class="card-body">
               <h5 class="card-title">{{ gite.name }}</h5>
               <p class="card-text">{{ gite.address }}</p>
-              <p class="card-text">Surface : {{ gite.superficy }} m²</p>
+              <p class="card-text">Surface :
+                {{ gite.superficy }}
+                m²</p>
               <p class="card-text">{{ formatResume(gite.descript) }}</p>
               <a href="{{ path('gite.show', {'id': gite.id}) }}" class="btn btn-secondary">Plus d'information</a>
             </div>

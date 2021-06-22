@@ -58,11 +58,24 @@ class GiteRepository extends ServiceEntityRepository
                         ->setParameter('maxPrice', $search->getMaxPrice());
         }
 
-        //requete sql bouton radio
+        //requete SQL Accueil animaux
         if($search->getAccueilAnimal()){
             $query = $query
                         ->andWhere('g.animals = :accueilAnimal')
                         ->setParameter('accueilAnimal',$search->getAccueilAnimal());
+        }
+
+        //requete SQL Equipements
+        if($search->getEquipements()){
+            foreach ($search->getEquipements() as $k => $equipement) {
+                $query = $query
+                            ->andWhere(":equipement$k MEMBER OF g.equipements")
+                            ->setParameter(
+                                "equipement$k",
+                                $equipement
+                            );
+            }
+
         }
 
         return $query->getQuery()

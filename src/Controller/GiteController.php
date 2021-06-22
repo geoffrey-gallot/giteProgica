@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\GiteSearch;
 use App\Form\GiteSearchType;
+use App\Repository\EquipementRepository;
 use App\Repository\GiteRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,6 +22,7 @@ class GiteController extends AbstractController
     public function __construct(GiteRepository $giteRepository)
     {
         $this->repo = $giteRepository;
+        // $this->equipRepo = $equipementRepository;EquipementRepository $equipementRepository
     }
 
     /**
@@ -47,14 +49,16 @@ class GiteController extends AbstractController
         Request $request
     ): Response
     {
-        // creer une entité recherche
-        // creer le formulaire associé
-        // gerer le traitement des donnée du form via SQL
         $search = new GiteSearch();
         $form = $this->createForm(GiteSearchType::class, $search);
         $form->handleRequest($request);
 
-        $data = $this->repo->findAllGiteSearch($search);
+        $data = $this
+                ->repo
+                ->findAllGiteSearch($search);
+                // ->findAllGiteEquipementSearch($search);
+         
+                
         $gites = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
@@ -76,7 +80,6 @@ class GiteController extends AbstractController
     public function show(int $id): Response
     {
         $gite = $this->repo->find($id);
-        // dd($gite);
         return $this->render('gite/show.html.twig',[
             "gite" => $gite,
         ]);

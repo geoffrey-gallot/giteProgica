@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Equipement;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\GiteSearch;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Equipement|null find($id, $lockMode = null, $lockVersion = null)
@@ -36,15 +37,21 @@ class EquipementRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Equipement
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+    
+    // public function findAllGiteEquipementSearch(GiteSearch $search): array
+    // {
+    //     $query = $this->createQueryBuilder('e');
+    //     if($search->getEquipements()){
+    //         $query = $query
+    //                     ->andWhere('e.equipement = :equipements')
+    //                     ->setParameter(
+    //                         'equipements',
+    //                          $search->getEquipements()
+    //                     );
+    //     }
+
+    //     return $query->getQuery()
+    //                  ->getResult();
+    // }
+    
 }

@@ -2,12 +2,26 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 class GiteSearch
 {
     private $minSurface;
     private $minBedroom;
     private $maxPrice;
     private $accueilAnimal;
+
+    /**
+     * Undocumented variable
+     *
+     * @var ArrayCollection
+     */
+    private $equipements;
+
+    public function __construct()
+    {
+        $this->equipements = new ArrayCollection();
+    }
 
     /**
      * Get the value of minSurface
@@ -85,6 +99,26 @@ class GiteSearch
     public function setAccueilAnimal($accueilAnimal)
     {
         $this->accueilAnimal = $accueilAnimal;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of equipements
+     */ 
+    public function getEquipements()
+    {
+        return $this->equipements;
+    }
+
+    /**
+     * Set the value of equipements
+     *
+     * @return  self
+     */ 
+    public function setEquipements($equipements)
+    {
+        $this->equipements = $equipements;
 
         return $this;
     }
