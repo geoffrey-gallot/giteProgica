@@ -6,8 +6,10 @@ use App\Entity\GiteSearch;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class GiteSearchType extends AbstractType
 {
@@ -38,9 +40,20 @@ class GiteSearchType extends AbstractType
                     'label' => 'Prix maximum'
                 ]
             )
+            //selecteur animal
+            ->add(
+                'accueilAnimal',
+                CheckboxType::class,
+                [
+                    'required' => false,
+                    'label' => 'Animaux Accepté'
+                ]
+
+            )
             ->add(
                 'submit', SubmitType::class
             );
+            
 
     }
 

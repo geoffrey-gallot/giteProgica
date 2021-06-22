@@ -58,6 +58,13 @@ class GiteRepository extends ServiceEntityRepository
                         ->setParameter('maxPrice', $search->getMaxPrice());
         }
 
+        //requete sql bouton radio
+        if($search->getAccueilAnimal()){
+            $query = $query
+                        ->andWhere('g.animals = :accueilAnimal')
+                        ->setParameter('accueilAnimal',$search->getAccueilAnimal());
+        }
+
         return $query->getQuery()
                      ->getResult();
     }

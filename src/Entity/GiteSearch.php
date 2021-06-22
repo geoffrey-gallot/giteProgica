@@ -7,6 +7,7 @@ class GiteSearch
     private $minSurface;
     private $minBedroom;
     private $maxPrice;
+    private $accueilAnimal;
 
     /**
      * Get the value of minSurface
@@ -64,6 +65,26 @@ class GiteSearch
     public function setMaxPrice($maxPrice) 
     {
         $this->maxPrice = $maxPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of accueilAnimal
+     */ 
+    public function getAccueilAnimal()
+    {
+        return $this->accueilAnimal;
+    }
+
+    /**
+     * Set the value of accueilAnimal
+     *
+     * @return  self
+     */ 
+    public function setAccueilAnimal($accueilAnimal)
+    {
+        $this->accueilAnimal = $accueilAnimal;
 
         return $this;
     }
