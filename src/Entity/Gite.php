@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
@@ -26,7 +27,7 @@ class Gite
 
     /**
      * @var File|null
-     * @* @Vich\UploadableField(mapping = "gite_image", fileNameProperty = "filename")
+     * @Vich\UploadableField(mapping = "gite_image", fileNameProperty = "filename")
      */
     private $imageFile;
 
@@ -38,7 +39,7 @@ class Gite
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
+     * 
      */
     private $address;
 
@@ -62,7 +63,7 @@ class Gite
 
     /**
      * @ORM\Column(type="boolean")
-     * @Assert\NotBlank()
+     *
      */
     private $animals;
 
@@ -118,9 +119,15 @@ class Gite
      */
     private $updated_at;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Service::class, inversedBy="gites")
+     */
+    private $services;
+
     public function __construct()
     {
         $this->equipements = new ArrayCollection();
+        $this->services = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -294,9 +301,9 @@ class Gite
     public function setImageFile($imageFile)
     {
         $this->imageFile = $imageFile;
-
+        
         if ($this->imageFile instanceof UploadedFile) {
-            $this->updated_At = new \DateTime('now');
+            $this->updated_at = new \DateTime('now');
         }
         
         return $this;
@@ -337,4 +344,29 @@ class Gite
 
         return $this;
     }
+
+    /**
+     * @return Collection|Service[]
+     */
+    public function getServices(): Collection
+    {
+        return $this->services;
+    }
+
+    public function addService(Service $service): self
+    {
+        if (!$this->services->contains($service)) {
+            $this->services[] = $service;
+        }
+
+        return $this;
+    }
+
+    public function removeService(Service $service): self
+    {
+        $this->services->removeElement($service);
+
+        return $this;
+    }
+
 }

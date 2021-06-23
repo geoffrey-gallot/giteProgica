@@ -2,10 +2,11 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Equipement;
 use Faker\Factory;
 use App\Entity\Gite;
 use App\Entity\User;
+use App\Entity\Service;
+use App\Entity\Equipement;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -48,7 +49,30 @@ class AppFixtures extends Fixture
         $manager->persist($eq4);
 
         $manager->flush();
+         
+        //creation service
+        $services = [];
 
+        $service1 = new Service;
+        $service1->setName('Pension Complete')
+                 ->setPrix('50');
+
+        $service2 = new Service;
+        $service2->setName('Demi pension')
+                 ->setPrix('25');
+
+        $service3 = new Service;
+        $service3->setName('internet')
+                 ->setPrix('3');
+
+        array_push($services, $service1, $service2, $service3);
+
+        $manager->persist($service1);
+        $manager->persist($service2);
+        $manager->persist($service3);
+        
+        
+        $manager->flush();
         //creation gite
         for ($i=0; $i < 50; $i++) { 
             
@@ -66,7 +90,8 @@ class AppFixtures extends Fixture
                 ->setDescript($faker->realText(500, 1))
                 ->addEquipement($faker->randomElement($equipements))
                 ->addEquipement($faker->randomElement($equipements))->setFileName($faker->imageUrl(1000, 500, 'city'))
-                ->setUpdatedAt($faker->dateTimeAD('now', null));
+                ->setUpdatedAt($faker->dateTimeAD('now', null))
+                ->addService($faker->randomElement($services));
 
             $manager->persist($gite[$i]);
         }

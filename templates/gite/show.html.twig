@@ -8,6 +8,7 @@
     <div class="card bg-white text-black col-8">
       {% if gite.fileName %}
         <img src="{{gite.fileName}}" class="card-img-top" alt="...">
+        {# <img src="{{vich_uploader_asset(gite,'imageFile')}}" class="card-img-top" alt="..."> #}
       {% endif %}
       <div class="card-img-overlay">
         <h5 class="card-title">{{ gite.name }}</h5>

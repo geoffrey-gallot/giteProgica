@@ -17,14 +17,16 @@
 
   </section>
   <div class="img d-flex justify-content-center">
-    <img src="http://via.placeholder.com/1000x500" alt="">
+    <img src="images/illustration/PROGICA.png" alt="">
   </div>
-  <section class="row">
+  <section class="row mt-5">
     {% for gite in gites %}
       <div class="col-md-4 mt-3">
         <div class="card" style="width: 18rem;">
           {% if gite.fileName %}
             <img src="{{gite.fileName}}" class="card-img-top" alt="...">
+            {# code de production #}
+            {# <img src="{{vich_uploader_asset(gite,'imageFile')}}" class="card-img-top" alt="..."> #}
           {% endif %}
           <div class="card-body">
             <h5 class="card-title">{{ gite.name }}</h5>
