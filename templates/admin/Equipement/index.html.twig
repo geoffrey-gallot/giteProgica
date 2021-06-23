@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+  <main class="container">
+    <section class="row">
+      <h1>Liste des equipement disponible</h1>
+    </section>
+    <section class="row">
+        <a href="{{ path('admin.equipement.new') }}" class="btn btn-warning col-md-3">Ajouter</a>
+    </section>
+    <section class="row">
+      <table class="table table-striped">
+        <thead>
+          <th>#id</th>
+          <th>name</th>
+          <th>action</th>
+        </thead>
+        <tbody>
+          {% for equipement in equipements %}
+            <tr>
+              <td>#{{ equipement.id }}</td>
+              <td>{{ equipement.name }}</td>
+                {#   #}
+                {#  #}
+
+
+              <td>
+                    <a href="{{ path('admin.equipement.edit', {id: equipement.id}) }}" class="btn btn-primary">Editer</a>
+                    <form method="post" action="{{path('admin.equipement.delete', {'id': equipement.id})}}" style="display: inline-block;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ equipement.id) }}">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn btn-danger">Supprimer</button>
+                    </form>
+
+              </td>
+                
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+    <section class="row">
+      <a href="{{ path('admin.index') }}" class="btn btn-secondary col-md-1">Retour</a>
+    </section>
+  </main>
+{% endblock %}

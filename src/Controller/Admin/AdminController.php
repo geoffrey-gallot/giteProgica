@@ -67,7 +67,7 @@ class AdminController extends AbstractController
 
     /**
      * Undocumented function
-     * @route("/admin/{id}/delete",name="admin.delete")
+     * @route("/admin/{id}/delete", name="admin.delete")
      */
     public function delete(Gite $gite, Request $request): Response
     {
@@ -93,7 +93,7 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->persist($gite);
             $this->em->flush();
-            $this->addFlash("success", "Le gîte a bien été Modifier");
+            $this->addFlash("success", "Le gîte a bien été Modifié");
             return $this->redirectToRoute('admin.index');
         }
 
