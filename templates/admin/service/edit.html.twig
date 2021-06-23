@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+  <section class="row">
+    <h1>Modifier un service</h1>
+  </section>
+  {{form_start(formService)}}
+  <section class="row">
+    <article class="col-md-5">
+      {{form_row(formService.name)}}
+    </article>
+    <article class="col-md-5">
+      {{form_row(formService.prix)}}
+    </article>
+    <article class="row">
+      <input type="submit" value="Créer" class="btn btn-success col-md-1 m-3">
+      <a href="{{ path('admin.service') }}" class="btn btn-secondary col-md-1 m-3">Annuler</a>
+    </article>
+  </section>
+  {{form_end(formService)}}
+{% endblock %}
