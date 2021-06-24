@@ -17,7 +17,13 @@ import ScrollReveal from 'scrollreveal';
 
 
 let cards = document.querySelectorAll(".card");
+let btncontact = document.getElementById("contact");
+let formContact =document.getElementById("contactForm");
 
+btncontact.addEventListener('click', e => {
+    e.preventDefault;
+    formContact.style.visibility = 'visible';
+});
 
 ScrollReveal().reveal(cards, {
     delay: 250,
