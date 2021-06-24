@@ -22,7 +22,7 @@ let formContact =document.getElementById("contactForm");
 
 btncontact.addEventListener('click', e => {
     e.preventDefault;
-    formContact.style.visibility = 'visible';
+    formContact.style.display = 'block';
 });
 
 ScrollReveal().reveal(cards, {
