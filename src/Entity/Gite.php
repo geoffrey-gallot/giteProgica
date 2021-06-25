@@ -28,6 +28,7 @@ class Gite
     /**
      * @var File|null
      * @Vich\UploadableField(mapping = "gite_image", fileNameProperty = "filename")
+     * @Assert\NotBlank()
      */
     private $imageFile;
 
@@ -302,9 +303,7 @@ class Gite
     {
         $this->imageFile = $imageFile;
         
-        if ($this->imageFile instanceof UploadedFile) {
-            $this->updated_at = new \DateTime('now');
-        }
+         
         
         return $this;
     }
