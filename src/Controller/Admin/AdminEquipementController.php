@@ -18,7 +18,7 @@ class AdminEquipementController extends AbstractController
 
     public function __construct(EquipementRepository $equipementRepository, EntityManagerInterface $em)
     {
-        $this->repo = $equipementRepository;
+        $this->equipementRepository = $equipementRepository;
         $this->em = $em;
     }
 
@@ -27,7 +27,7 @@ class AdminEquipementController extends AbstractController
      */
     public function index(): Response
     {
-        $equipements = $this->repo->findAll();
+        $equipements = $this->equipementRepository->findAll();
         return $this->render('admin/equipement/index.html.twig', [
             'equipements' => $equipements
         ]);

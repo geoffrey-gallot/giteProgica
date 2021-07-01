@@ -13,12 +13,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminServiceController extends AbstractController
 {
-    private ServiceRepository $equipementRepository;
+    private ServiceRepository $serviceRepository;
     private EntityManagerInterface $em;
 
     public function __construct(ServiceRepository $serviceRepository, EntityManagerInterface $em)
     {
-        $this->repo = $serviceRepository;
+        $this->serviceRepository = $serviceRepository;
         $this->em = $em;
     }
 
@@ -27,7 +27,7 @@ class AdminServiceController extends AbstractController
      */
     public function index(): Response
     {
-        $services = $this->repo->findAll();
+        $services = $this->serviceRepository->findAll();
         return $this->render('admin/service/index.html.twig', [
             'services' => $services
         ]);

@@ -17,6 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class GiteController extends AbstractController
 {
+    private GiteRepository $giteRepository;
     /**
      * Undocumented function
      *
@@ -24,7 +25,7 @@ class GiteController extends AbstractController
      */
     public function __construct(GiteRepository $giteRepository)
     {
-        $this->repo = $giteRepository;
+        $this->giteRepository = $giteRepository;
         // $this->equipRepo = $equipementRepository;EquipementRepository $equipementRepository
     }
 
@@ -35,7 +36,7 @@ class GiteController extends AbstractController
      */
     public function index()
     {
-        $gites = $this->repo->findLastGites();
+        $gites = $this->giteRepository->findLastGites();
         return $this->render('home/index.html.twig', [
              'gites' => $gites
         ]);
@@ -57,7 +58,7 @@ class GiteController extends AbstractController
         $form->handleRequest($request);
 
         $data = $this
-                ->repo
+                ->giteRepository
                 ->findAllGiteSearch($search);
                 // ->findAllGiteEquipementSearch($search);
          
@@ -82,7 +83,7 @@ class GiteController extends AbstractController
      */
     public function show(int $id, Request $request, ContactNotification $notification): Response
     {   
-        $gite = $this->repo->find($id);
+        $gite = $this->giteRepository->find($id);
         $contact = new Contact();
         $contact->setGite($gite);
         $form = $this->createForm(ContactType::class, $contact);

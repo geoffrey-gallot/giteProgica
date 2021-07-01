@@ -9,12 +9,13 @@ use Symfony\Component\Mailer\MailerInterface;
 
 class ContactNotification
 {
-    private $mailer;
+    private MailerInterface $mailer;
+    private Environment $environment;
 
-    public function __construct(MailerInterface $mailer, Environment $renderer)
+    public function __construct(MailerInterface $mailer, Environment $environment)
     {
         $this->mailer = $mailer;
-        $this->renderer = $renderer;
+        $this->environment = $environment;
     }
 
     public function notify(Contact $contact)

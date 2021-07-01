@@ -46,9 +46,9 @@ class Contact
     /**
      * Undocumented variable
      *
-     * @var gite|null
+     * @var Gite|null
      */
-    private $gite;
+    private Gite $gite;
 
     /**
      * Get the value of firstname
@@ -63,7 +63,7 @@ class Contact
     /**
      * Set the value of firsname
      *
-     * @param  [type]  $firstname
+     * @param  string  $firstname
      *
      * @return  self
      */ 
@@ -77,7 +77,7 @@ class Contact
     /**
      * Get the value of lastname
      *
-     * @return  [type]
+     * @return  string
      */ 
     public function getLastname()
     {
@@ -87,7 +87,7 @@ class Contact
     /**
      * Set the value of lastname
      *
-     * @param  [type]  $lastname
+     * @param  string  $lastname
      *
      * @return  self
      */ 
@@ -101,7 +101,7 @@ class Contact
     /**
      * Get pattern="/[0-9]{10}/",
      *
-     * @return  [type]
+     * @return  string
      */ 
     public function getPhone()
     {
@@ -111,7 +111,7 @@ class Contact
     /**
      * Set pattern="/[0-9]{10}/",
      *
-     * @param  [type]  $phone  pattern="/[0-9]{10}/",
+     * @param  string  $phone  pattern="/[0-9]{10}/",
      *
      * @return  self
      */ 
@@ -125,7 +125,7 @@ class Contact
     /**
      * Get the value of email
      *
-     * @return  [type]
+     * @return  string
      */ 
     public function getEmail()
     {
@@ -135,7 +135,7 @@ class Contact
     /**
      * Set the value of email
      *
-     * @param  [type]  $email
+     * @param  string  $email
      *
      * @return  self
      */ 
@@ -149,7 +149,7 @@ class Contact
     /**
      * Get the value of message
      *
-     * @return  [type]
+     * @return  string
      */ 
     public function getMessage()
     {
@@ -159,7 +159,7 @@ class Contact
     /**
      * Set the value of message
      *
-     * @param  [type]  $message
+     * @param  string  $message
      *
      * @return  self
      */ 
@@ -173,7 +173,7 @@ class Contact
     /**
      * Get undocumented variable
      *
-     * @return  gite|null
+     * @return  Gite|null
      */ 
     public function getGite()
     {
@@ -183,11 +183,11 @@ class Contact
     /**
      * Set undocumented variable
      *
-     * @param  gite|null  $gite  Undocumented variable
+     * @param  Gite|null  $gite  Undocumented variable
      *
      * @return  self
      */ 
-    public function setGite($gite)
+    public function setGite(Gite $gite)
     {
         $this->gite = $gite;
 

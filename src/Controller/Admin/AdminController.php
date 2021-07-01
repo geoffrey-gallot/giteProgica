@@ -24,7 +24,7 @@ class AdminController extends AbstractController
      */
     public function __construct(GiteRepository $giteRepository, EntityManagerInterface $em)
     {
-        $this->repo = $giteRepository;
+        $this->giteRepository = $giteRepository;
         $this->em = $em;
     }
 
@@ -35,7 +35,7 @@ class AdminController extends AbstractController
      */
     public function index()
     {
-        $gites = $this->repo->findAll();
+        $gites = $this->giteRepository->findAll();
         return $this->render('admin/index.html.twig', [
             'gites' => $gites,
         ]);
