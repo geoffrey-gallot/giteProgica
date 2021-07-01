@@ -21,7 +21,13 @@
     <article class="row">
       <div class="col-md-6">
         {{ form_row(formGite.address) }}
+        {{ form_row(formGite.city) }}
+        {{ form_row(formGite.postalCode) }}
       </div>
+    </article>
+    <article class="row">
+      <div class="col-md-6">{{ form_row(formGite.lat) }}</div>
+      <div class="col-md-6">{{ form_row(formGite.lng) }}</div>
     </article>
 
     <article class="row">

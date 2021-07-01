@@ -13,6 +13,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -71,7 +72,16 @@ class GiteType extends AbstractType
                 'expanded' => true,
                 'choice_label' => 'name',
                 'multiple' => true,
-            ]);
+            ])
+            ->add('city', TextType::class, [
+                'required' => false,
+            ])
+            ->add('postalCode', TextType::class, [
+                'required' => false,
+            ])
+            ->add('lat', HiddenType::class)
+            ->add('lng', HiddenType::class)
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

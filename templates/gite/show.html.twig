@@ -5,44 +5,51 @@
 
 {% block body %}
   <main class="justify-content-center">
-    <section class="row">
-      <div class="card bg-white text-black col-8">
-        {% if gite.fileName %}
-          <img src="{{gite.fileName}}" class="card-img-top" alt="...">
-          {# <img src="{{vich_uploader_asset(gite,'imageFile')}}" class="card-img-top" alt="..."> #}
-        {% endif %}
-        <div class="card-img-overlay">
-          <h5 class="card-title">{{ gite.name }}</h5>
+    <section class="row mt-4">
+      <article class="col-6">
+        <div class="card bg-white text-black col-8">
+          {% if gite.fileName %}
+            <img src="{{gite.fileName}}" class="card-img-top" alt="...">
+            {# <img src="{{vich_uploader_asset(gite,'imageFile')}}" class="card-img-top" alt="..."> #}
+          {% endif %}
+          <div class="card-img-overlay">
+            <h5 class="card-title">{{ gite.name }}</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{ gite.descript }}</p>
+            <p class="card-text">{{ gite.address }}</p>
+            <p class="card-text">{{ gite.postalCode }}</p>
+            <p class="card-text">{{ gite.City }}</p>
+            <p class="card-text">Prix Pour une nuit en haute saison :
+              {{gite.priceHightSeason}}
+              €</p>
+            <p class="card-text">Prix Pour une nuit en basse saison :
+              {{gite.priceLowSeason}}
+              €</p>
+            <p class="card-text">
+              {% if gite.animals is same as(true) %}
+                <p>animaux accepté</p>
+                <p>Supplément de
+                  {{ gite.priceAnimals }}
+                  € par animal</p>
+              {% else %}
+                <p>animaux refusé</p>
+              {% endif %}
+            </p>
+            <p class="card-text">
+              <h6>Equipements :</h6>
+              <ul>
+                {% for equipement in gite.equipements %}
+                  <li>{{ equipement.name }}</li>
+                {% endfor %}
+              </ul>
+            </p>
+          </div>
         </div>
-        <div class="card-body">
-          <p class="card-text">{{ gite.descript }}</p>
-          <p class="card-text">{{ gite.address }}</p>
-          <p class="card-text">Prix Pour une nuit en haute saison :
-            {{gite.priceHightSeason}}
-            €</p>
-          <p class="card-text">Prix Pour une nuit en basse saison :
-            {{gite.priceLowSeason}}
-            €</p>
-          <p class="card-text">
-            {% if gite.animals is same as(true) %}
-              <p>animaux accepté</p>
-              <p>Supplément de
-                {{ gite.priceAnimals }}
-                € par animal</p>
-            {% else %}
-              <p>animaux refusé</p>
-            {% endif %}
-          </p>
-          <p class="card-text">
-            <h6>Equipements :</h6>
-            <ul>
-              {% for equipement in gite.equipements %}
-                <li>{{ equipement.name }}</li>
-              {% endfor %}
-            </ul>
-          </p>
-        </div>
-      </div>
+      </article>
+      <article class="col-6">
+        <div id="map" style="width: 100%; height: 400px;" data-lat="{{ gite.lat }}" data-lng="{{ gite.lng }}"></div>
+      </article>
     </section>
 
     <section class="row mt-3">

@@ -78,7 +78,9 @@ class AppFixtures extends Fixture
             
             $gite[$i] = new Gite();
             $gite[$i]
-                ->setAddress($faker->address())
+                ->setAddress($faker->streetAddress())
+                ->setPostalCode($faker->postcode())
+                ->setCity($faker->city())
                 ->setSuperficy($faker->numberBetween(60, 180))
                 ->setBedroom($faker->numberBetween(1, 4))
                 ->setNbBed($faker->numberBetween(1, 4))
