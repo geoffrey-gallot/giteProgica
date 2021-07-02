@@ -59,6 +59,9 @@ if (inputAddress !== null) {
 //mise en place map
 let map = document.querySelector("#map");
 if (map !== null) {
+  let icon = L.icon({
+    iconUrl:"images/gites/marker-icon.png"
+  })
   let center = [map.dataset.lat, map.dataset.lng];
   map = L.map("map").setView([map.dataset.lat, map.dataset.lng], 13);
   let token =
@@ -70,5 +73,5 @@ if (map !== null) {
       minZoom: 10,
     }
   ).addTo(map);
-  L.marker(center,{icon: icon}).addTo(map);
+  L.marker(center, {icon: icon}).addTo(map);
 }
